@@ -1,0 +1,28 @@
+<app-title title="Orders Page" margin="1.5rem 0 0 2.5rem"></app-title>
+<app-not-found
+  [visible]="!cart "
+  notFoundMessage="Cart Page Is Empty!"
+  resetLinkText="Go To Homepage"
+></app-not-found>
+<div *ngIf="cart"  class="container">
+<ul>
+  <ul *ngFor="let item of cart">
+    <div>{{item.updatedAt}}</div>
+  <li *ngFor="let cartItem of item.items">
+    <div>
+      <img [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name">
+    </div>
+    <div>
+      <a routerLink="/track/{{item.id}}">
+        {{cartItem.food.name}}
+      </a>
+    </div>
+   
+    <div>
+      {{cartItem.price | currency}}
+    </div>
+  </li>
+</ul>
+</ul>
+
+</div>
